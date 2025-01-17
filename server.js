@@ -49,13 +49,14 @@ const getDaysMessages = () => {
 
 app.get('/assistant/greet', (req, res) => {
   const name = req.query.name;
-  if (!name) {
-    return res.status(400).json({ message: "Please provide a name." });
-  }
 
   const welcomeMessage = `Hello, ${name}! Welcome to our assistant app!`;
   const dayMessage = getDaysMessages();
 
   res.json({ welcomeMessage, dayMessage });
+});
 
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`The API is running on http://localhost:${PORT}`);
 });
